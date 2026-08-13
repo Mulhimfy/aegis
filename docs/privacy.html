@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Aegis</title>
+<meta name="description" content="Aegis reads your phone's security state on the device and never sends it anywhere. There are no servers, no accounts and no analytics.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f6f8;
+    --border: #e3e5e9;
+    --text: #16181d;
+    --muted: #5c6270;
+    --accent: #1c5fd6;
+    --rule: #ececf0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101215;
+      --surface: #191c21;
+      --border: #2a2e35;
+      --text: #e8eaee;
+      --muted: #9aa1ae;
+      --accent: #6ea8ff;
+      --rule: #23262c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 3rem 1.25rem 5rem;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 41rem; margin: 0 auto; }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 .4rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    margin: 2.75rem 0 .75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  .updated { color: var(--muted); font-size: .9rem; margin: 0 0 2rem; }
+  .lede {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.15rem 1.25rem;
+    margin: 0 0 2.5rem;
+  }
+  .lede p { margin: 0; }
+  .lede p + p { margin-top: .7rem; }
+  .lede strong { font-weight: 600; }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+  li { margin-bottom: .45rem; }
+  li::marker { color: var(--muted); }
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .875em;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: .1em .35em;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  @media (max-width: 480px) {
+    body { padding-top: 2rem; font-size: 16px; }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Aegis · Last updated 13 August 2026</p>
+
+  <div class="lede">
+    <p><strong>Aegis has no servers.</strong> It reads your phone's security
+    settings on the device, shows you what it found, and sends none of it
+    anywhere. There is no account to create, no analytics, no advertising and
+    no third-party tracking.</p>
+    <p>An app that reads your phone's security posture and then uploaded it
+    would be the exact thing it warns you about.</p>
+  </div>
+
+  <h2>What Aegis reads from your phone</h2>
+  <p>When you run a check, Aegis asks the operating system about the state of
+  the device. Depending on your platform and OS version, that includes:</p>
+  <ul>
+    <li>Whether a screen lock is set, whether biometrics are enrolled, and how
+      long the screen stays unlocked</li>
+    <li>Whether the lock screen shows notification contents</li>
+    <li>Your OS version and security patch level</li>
+    <li>Whether storage is encrypted</li>
+    <li>Whether the device appears rooted, jailbroken, emulated, or has a
+      debugger attached</li>
+    <li>Whether developer options or USB debugging are on</li>
+    <li>Whether Google Play Protect, encrypted DNS and cloud backup are on</li>
+    <li>Whether a VPN is active, and whether the Wi-Fi network you are
+      currently on is encrypted</li>
+    <li>The names of apps you have granted accessibility access, notification
+      access, or device-administrator rights</li>
+    <li>Your device model</li>
+  </ul>
+  <p>All of it is read, scored and displayed on the device. None of it is
+  transmitted, and Aegis contains no networking code to transmit it with.</p>
+
+  <h2>What Aegis does not read</h2>
+  <p>Aegis does not access your location, contacts, photos, messages, call
+  history, files, microphone, camera or browsing history. It does not read the
+  name of your Wi-Fi network or anything that passes over it — only whether
+  that network is encrypted. It does not enumerate the apps you have installed;
+  it sees only the ones the system reports as holding one of the elevated
+  permissions listed above.</p>
+
+  <h2>What is stored, and where</h2>
+  <p>Aegis keeps a small amount of state in your phone's own app storage, in
+  the private area the operating system reserves for it. That is:</p>
+  <ul>
+    <li>Your most recent score, the number of issues found, and when the scan ran</li>
+    <li>Your best score so far</li>
+    <li>Answers you have given to questions the app cannot measure itself</li>
+    <li>Apps you have marked as reviewed and trusted</li>
+    <li>Whether you have finished the welcome screen</li>
+    <li>Your own invite code, the code of whoever invited you if you arrived
+      through a link, and how many invites you have sent</li>
+    <li>Which milestones have already been celebrated</li>
+  </ul>
+  <p>Invite codes are eight random characters. They are not derived from you,
+  your device or your account, and they are not registered anywhere.</p>
+  <p>This data is never uploaded. It is removed when you uninstall the app, and
+  you can erase it at any time from <strong>Settings → Erase what Aegis
+  remembers</strong>.</p>
+
+  <h2>Permissions</h2>
+  <p>On Android, Aegis declares two permissions:
+  <code>ACCESS_NETWORK_STATE</code> and <code>ACCESS_WIFI_STATE</code>. Both are
+  read-only, are granted at install time, and are used solely to tell whether a
+  VPN is active and whether the current network is encrypted. On iOS, Aegis
+  requests no permissions at all.</p>
+
+  <h2>When you share</h2>
+  <p>Nothing leaves the app unless you tap share. When you do, Aegis hands your
+  phone's own share sheet an image of your score card and a link containing your
+  invite code and score number — nothing else about your device, and none of the
+  individual findings. You choose who receives it. Once it is sent, it is
+  governed by the privacy policy of whichever app you sent it through, not by
+  this one.</p>
+  <p>If someone opens one of those links in a web browser, the server hosting
+  the page receives the request the way any website does, including the IP
+  address and browser the visitor is using. That is a property of the web, not
+  something Aegis reports.</p>
+
+  <h2>Third parties</h2>
+  <p>Aegis embeds no advertising networks, no analytics SDKs and no crash
+  reporting. No third party receives data from the app. If you installed Aegis
+  from Google Play or the App Store, that store collects its own information
+  about the download under its own policy; Aegis neither controls nor receives
+  it.</p>
+
+  <h2>Children</h2>
+  <p>Aegis is safe for all ages and collects nothing from anyone, including
+  children. It has no account system, no profile and no way to identify a user.</p>
+
+  <h2>Your rights</h2>
+  <p>Regulations such as the GDPR and CCPA give you rights to access, correct,
+  export and delete the personal data a company holds about you. Aegis holds
+  none: there is no server, no database and no record of you anywhere outside
+  your own phone. The data described above sits in your device's storage under
+  your control, and the erase option in Settings deletes all of it immediately.
+  There is nothing for us to sell, and we have never sold or shared any user
+  data.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If Aegis ever changes what it reads or stores, this page is updated before
+  that version ships, and the date at the top changes with it. Its full revision
+  history is public in the project repository.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy or about what the app does:
+  <a href="mailto:ahmeddevfy@gmail.com">ahmeddevfy@gmail.com</a>.</p>
+
+  <footer>
+    Aegis — a phone security maintainer.
+    Everything in the product runs on the phone.
+  </footer>
+
+</main>
+</body>
+</html>
