@@ -87,7 +87,7 @@ ios/Runner/
   SecurityProbe.swift  what the sandbox honestly permits, and nothing else
 
 web/                 assetlinks + AASA for verified invite links
-tool/make_icons.py   renders the mark into every icon slot both platforms want
+tool/gen_aegis.py    draws the mark and every Android slot, plus store masters
 ```
 
 ## Design
@@ -107,7 +107,7 @@ believing it.
 flutter test                                    59 tests
 flutter analyze                                 clean
 flutter build apk --release --split-per-abi
-python tool/make_icons.py                       regenerate icons
+python tool/gen_aegis.py                        redraw the mark and icons
 
 AEGIS_DUMP_CARDS=<dir> flutter test test/share_card_test.dart
                                                 write the share cards out as PNGs
