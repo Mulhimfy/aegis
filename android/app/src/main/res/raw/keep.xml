@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The launch mark is named only from a drawable the shrinker cannot follow, so
+  it needs keeping by hand.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/launch_mark" />

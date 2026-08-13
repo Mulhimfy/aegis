@@ -1,0 +1,12 @@
+# Copy to android/key.properties and fill in. That file is gitignored.
+#
+# Create the keystore once, and keep it somewhere you will still have in three
+# years: losing it means you can never publish an update to this app again.
+#
+#   keytool -genkey -v -keystore aegis-upload.jks -storetype JKS \
+#     -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+#
+storeFile=../aegis-upload.jks
+storePassword=
+keyAlias=upload
+keyPassword=

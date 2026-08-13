@@ -1,0 +1,36 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+  errors:
+    # A missing return type or an unawaited future in an app that reads security
+    # state is a defect, not a style note.
+    always_declare_return_types: error
+    unawaited_futures: error
+
+linter:
+  rules:
+    # Dart forbids a named parameter beginning with an underscore, so a private
+    # field initialised from a named parameter can never be an initialising
+    # formal. The rule only produces false positives here.
+    prefer_initializing_formals: false
+
+    always_declare_return_types: true
+    avoid_dynamic_calls: true
+    avoid_slow_async_io: true
+    cancel_subscriptions: true
+    close_sinks: true
+    directives_ordering: true
+    join_return_with_assignment: false
+    prefer_final_locals: true
+    prefer_single_quotes: true
+    require_trailing_commas: false
+    sort_child_properties_last: true
+    test_types_in_equals: true
+    throw_in_finally: true
+    unawaited_futures: true
+    unnecessary_parenthesis: true
+    unnecessary_statements: true
+    use_super_parameters: true

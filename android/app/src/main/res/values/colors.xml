@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The mark's own ground. Deliberately fixed rather than themed: a
+         launcher icon that changes colour with the system theme stops being
+         recognisable, which is the one job it has. -->
+    <color name="ic_launcher_background">#16181C</color>
+
+    <!-- Matches the light scheme's surface, so the launch window and the first
+         Flutter frame are the same colour. -->
+    <color name="launch_background">#FBF8FD</color>
+</resources>

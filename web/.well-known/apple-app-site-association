@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["REPLACE_WITH_TEAMID.app.aegis.aegis"],
+        "components": [
+          { "/": "/s/*", "comment": "A shared score" },
+          { "/": "/c/*", "comment": "A request to check your own phone" }
+        ]
+      }
+    ]
+  }
+}
