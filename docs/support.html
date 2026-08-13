@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Aegis</title>
+<meta name="description" content="Help with Aegis, the phone security checker. How the score works, what it can and cannot read, and how to get in touch.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f6f8;
+    --border: #e3e5e9;
+    --text: #16181d;
+    --muted: #5c6270;
+    --accent: #1c5fd6;
+    --rule: #ececf0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101215;
+      --surface: #191c21;
+      --border: #2a2e35;
+      --text: #e8eaee;
+      --muted: #9aa1ae;
+      --accent: #6ea8ff;
+      --rule: #23262c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 3rem 1.25rem 5rem;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 41rem; margin: 0 auto; }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 .4rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    margin: 2.75rem 0 .75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  h3 { font-size: 1rem; margin: 1.75rem 0 .4rem; }
+  .updated { color: var(--muted); font-size: .9rem; margin: 0 0 2rem; }
+  .lede {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.15rem 1.25rem;
+    margin: 0 0 2.5rem;
+  }
+  .lede p { margin: 0; }
+  .lede p + p { margin-top: .7rem; }
+  .lede strong { font-weight: 600; }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+  li { margin-bottom: .45rem; }
+  li::marker { color: var(--muted); }
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .875em;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: .1em .35em;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  @media (max-width: 480px) {
+    body { padding-top: 2rem; font-size: 16px; }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Support</h1>
+  <p class="updated">Aegis · Last updated 13 August 2026</p>
+
+  <div class="lede">
+    <p><strong>Email <a href="mailto:ahmeddevfy@gmail.com">ahmeddevfy@gmail.com</a></strong>
+    and you will get a reply from a person, usually within two days.</p>
+    <p>Aegis has no account and no server, so there is nothing to look up on
+    our side. Telling us your phone model, your OS version and what the app
+    said is what makes a question answerable.</p>
+  </div>
+
+  <h2>Common questions</h2>
+
+  <h3>What is the score?</h3>
+  <p>It is built only from checks that were actually measured on your phone.
+  When the operating system refuses to disclose something, that check is
+  reported as unreadable and drops out of the score entirely rather than being
+  guessed at. A lower number means more of the things Aegis could see are left
+  open.</p>
+
+  <h3>Why does the score change when nothing changed?</h3>
+  <p>Some checks depend on the state of the device at that moment, such as
+  whether a VPN is active or whether the screen is being recorded. Others
+  depend on answers you gave, which expire after 90 days on purpose: a phone
+  configured correctly last year is not evidence about the phone today.</p>
+
+  <h3>It says my phone may be jailbroken and it is not.</h3>
+  <p>Jailbreak detection is a heuristic, and Aegis says so. Each indicator is
+  shown with the reason it fired so you can judge it yourself instead of being
+  handed a verdict. If you believe an indicator is wrong, email us the exact
+  wording and we will look at the rule.</p>
+
+  <h3>Why does iOS show fewer checks than Android?</h3>
+  <p>iOS deliberately tells apps very little about the rest of the system, and
+  that restraint is itself a security feature. Aegis reads only what the
+  sandbox honestly permits. Anything it cannot see becomes a question you
+  answer rather than a value quietly invented.</p>
+
+  <h3>Can Aegis fix things for me?</h3>
+  <p>No, and that is deliberate. Every fix is you, in your own settings. The
+  app holds no permission to alter your device. What it does is take you
+  directly to the exact system screen that changes the setting.</p>
+
+  <h3>A "Fix this" button did not open the right screen.</h3>
+  <p>Deep links into system settings vary by manufacturer and OS version. When
+  a destination is unavailable Aegis falls back to the closest screen it can
+  reach. Send us your phone model and OS version and we will add a route.</p>
+
+  <h3>How do I delete what the app knows about me?</h3>
+  <p>Settings, then <em>Erase what Aegis remembers</em>. That clears your saved
+  answers and your invite code from the device. Deleting the app removes the
+  same data. Nothing was ever sent anywhere, so there is nothing else to
+  delete.</p>
+
+  <h3>Does Aegis need an account or an internet connection?</h3>
+  <p>Neither. Every check runs on the device, offline. The only time the app
+  opens the network is when you tap a link that goes to a web page, which
+  opens in your browser.</p>
+
+  <h2>Privacy</h2>
+  <p>Aegis collects nothing. The full policy is at
+  <a href="privacy.html">the privacy page</a>.</p>
+
+  <h2>Reporting a problem</h2>
+  <p>Bugs and feature requests are welcome by email, or on
+  <a href="https://github.com/Mulhimfy/aegis/issues">GitHub</a> if you have an
+  account there. For anything security related, please write by email first
+  rather than opening a public issue.</p>
+
+  <footer>
+    <p>Aegis · <a href="privacy.html">Privacy Policy</a> ·
+    <a href="mailto:ahmeddevfy@gmail.com">ahmeddevfy@gmail.com</a></p>
+  </footer>
+
+</main>
+</body>
+</html>

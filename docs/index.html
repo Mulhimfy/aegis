@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aegis — see what your phone leaves open</title>
+<meta name="description" content="Aegis reads the actual security state of your phone, says what is wrong in plain words, and takes you to the exact setting that fixes it. Nothing leaves the device.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f6f8;
+    --border: #e3e5e9;
+    --text: #16181d;
+    --muted: #5c6270;
+    --accent: #1c5fd6;
+    --rule: #ececf0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101215;
+      --surface: #191c21;
+      --border: #2a2e35;
+      --text: #e8eaee;
+      --muted: #9aa1ae;
+      --accent: #6ea8ff;
+      --rule: #23262c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 3rem 1.25rem 5rem;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 41rem; margin: 0 auto; }
+  h1 {
+    font-size: 2.35rem;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin: 0 0 .5rem;
+  }
+  .tagline { color: var(--muted); font-size: 1.1rem; margin: 0 0 2.5rem; }
+  h2 {
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    margin: 2.75rem 0 .75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .lede {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.15rem 1.25rem;
+    margin: 0 0 2.5rem;
+  }
+  .lede p { margin: 0; }
+  .lede p + p { margin-top: .7rem; }
+  .lede strong { font-weight: 600; }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+  li { margin-bottom: .45rem; }
+  li::marker { color: var(--muted); }
+  blockquote {
+    margin: 0 0 1rem;
+    padding: .1rem 0 .1rem 1rem;
+    border-left: 3px solid var(--border);
+    color: var(--muted);
+  }
+  blockquote p { margin: 0 0 .35rem; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  @media (max-width: 480px) {
+    body { padding-top: 2rem; font-size: 16px; }
+    h1 { font-size: 1.85rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Aegis</h1>
+  <p class="tagline">See what your phone leaves open.</p>
+
+  <div class="lede">
+    <p><strong>It reads the phone.</strong> Not a checklist of advice: the
+    actual state of this device, right now, said in a sentence that names what
+    is true.</p>
+    <p>Then it takes you to the exact system settings screen that fixes it,
+    and re-checks itself when you come back.</p>
+  </div>
+
+  <h2>What it tells you</h2>
+  <blockquote>
+    <p>Missing 7 months of security patches.</p>
+    <p>2 apps can read everything on your screen.</p>
+    <p>The screen never locks itself.</p>
+    <p>This network has no password, so nothing is protected.</p>
+  </blockquote>
+  <p>Most people have never seen any of that written down about their own
+  phone.</p>
+
+  <h2>The rules it holds to</h2>
+  <ul>
+    <li><strong>Nothing leaves the device.</strong> No server, no account, no
+    analytics. An app that reads your security posture and then uploaded it
+    would be the thing it warns you about.</li>
+    <li><strong>Nothing is guessed.</strong> When the operating system refuses
+    to disclose a signal, the check reports as unreadable and drops out of the
+    score rather than being assumed.</li>
+    <li><strong>It cannot change anything.</strong> Every fix is you, in your
+    own settings. The app holds no permission to alter the device.</li>
+    <li><strong>Questions the OS will not answer are asked out loud.</strong>
+    Answers expire after 90 days, because a phone configured correctly last
+    year is not evidence about the phone today.</li>
+  </ul>
+
+  <h2>Get it</h2>
+  <p>Coming to the App Store and Google Play.</p>
+
+  <footer>
+    <p><a href="privacy.html">Privacy Policy</a> ·
+    <a href="support.html">Support</a> ·
+    <a href="mailto:ahmeddevfy@gmail.com">ahmeddevfy@gmail.com</a></p>
+  </footer>
+
+</main>
+</body>
+</html>
