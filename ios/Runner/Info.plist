@@ -26,6 +26,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<!-- Aegis does no networking and encrypts nothing. Declaring it here is what
+	     stops App Store Connect asking about export compliance on every upload. -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<!-- Invite links. Every shared score and every check request lands here. -->
 	<key>CFBundleURLTypes</key>
 	<array>

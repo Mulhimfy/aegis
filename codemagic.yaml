@@ -27,8 +27,7 @@ definitions:
     vars:
       BUNDLE_ID: "com.aegiss.app"
       # Numeric Apple ID from App Store Connect > App Information.
-      # Leave empty until the app record exists; the build number falls back to 1.
-      APP_STORE_APPLE_ID: ""
+      APP_STORE_APPLE_ID: "6801120882"
 
   signing: &signing
     ios_signing:
