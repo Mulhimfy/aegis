@@ -4,12 +4,11 @@
 #   ios-testflight   push to main  -> build, upload to TestFlight
 #   ios-appstore     tag v*        -> build, upload, submit for App Store review
 #
-# Before the first build, in the Codemagic UI:
-#   1. Team settings > Integrations > App Store Connect: add an API key.
-#      Name it exactly "Aegis ASC" or change `app_store_connect:` below to match.
-#      The key needs the App Manager role.
-#   2. Create the app record in App Store Connect (bundle com.aegiss.app), then
-#      put its numeric Apple ID into APP_STORE_APPLE_ID below.
+# Signing and upload run off the team's existing App Store Connect API key,
+# "AyahReel ASC key" (PCCGPRB5YD). Integrations are team-wide, not per-app, and
+# aegiss lives under the same Apple team (2FH7TS9BNA), so it reuses that key
+# rather than adding a second one. The name below must match the integration
+# exactly as it reads under Codemagic > Teams > Integrations.
 #
 # The API key covers signing too — `ios_signing` lets Codemagic fetch or create
 # the distribution certificate and provisioning profile automatically. Nothing
@@ -106,7 +105,7 @@ workflows:
     name: iOS — TestFlight
     <<: *instance
     integrations:
-      app_store_connect: Aegis ASC
+      app_store_connect: AyahReel ASC key
     environment:
       <<: [*env, *signing]
     triggering:
@@ -141,7 +140,7 @@ workflows:
     name: iOS — App Store submission
     <<: *instance
     integrations:
-      app_store_connect: Aegis ASC
+      app_store_connect: AyahReel ASC key
     environment:
       <<: [*env, *signing]
     triggering:
