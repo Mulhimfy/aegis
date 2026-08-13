@@ -28,11 +28,6 @@ definitions:
       # Numeric Apple ID from App Store Connect > App Information.
       APP_STORE_APPLE_ID: "6801120882"
 
-  signing: &signing
-    ios_signing:
-      distribution_type: app_store
-      bundle_identifier: com.aegiss.app
-
   build_scripts: &build_scripts
     - name: Get Flutter packages
       script: flutter pub get
@@ -65,7 +60,19 @@ definitions:
         find . -name "Podfile" -execdir pod install \;
 
     - name: Set up code signing
-      script: xcode-project use-profiles
+      # The declarative `ios_signing:` block only fetches existing profiles, so
+      # a bundle identifier that has never been signed fails with "No matching
+      # profiles found". --create makes the App Store profile on the spot, and
+      # a distribution certificate too if the team has none yet. Both are
+      # reused on later builds rather than piling up duplicates.
+      script: |
+        set -e
+        keychain initialize
+        app-store-connect fetch-signing-files "$BUNDLE_ID" \
+          --type IOS_APP_STORE \
+          --create
+        keychain add-certificates
+        xcode-project use-profiles
 
     - name: Resolve next build number
       # One past whatever TestFlight already has, so a build is never rejected
@@ -107,7 +114,7 @@ workflows:
     integrations:
       app_store_connect: AyahReel ASC key
     environment:
-      <<: [*env, *signing]
+      <<: *env
     triggering:
       events:
         - push
@@ -142,7 +149,7 @@ workflows:
     integrations:
       app_store_connect: AyahReel ASC key
     environment:
-      <<: [*env, *signing]
+      <<: *env
     triggering:
       events:
         - tag
