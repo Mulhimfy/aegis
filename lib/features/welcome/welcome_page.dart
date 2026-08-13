@@ -42,7 +42,7 @@ class WelcomePage extends StatelessWidget {
             ),
             const SizedBox(height: Insets.lg),
             Text(
-              'Aegis reads your phone’s security settings, scores them, and '
+              'Aegiss reads your phone’s security settings, scores them, and '
               'tells you which one to change first.',
               style: TextStyle(
                 fontSize: 17,

@@ -37,7 +37,7 @@ Future<void> pumpApp(
 }) async {
   useTallPhone(tester);
   await tester.pumpWidget(
-    AegisApp(
+    AegissApp(
       store: store,
       probe: probe,
     ),
@@ -64,7 +64,7 @@ void main() {
       store: await freshStore(),
     );
 
-    expect(find.text('Aegis'), findsWidgets);
+    expect(find.text('Aegiss'), findsWidgets);
     expect(find.text('Open now'), findsNothing);
     expect(find.text('Only you can answer these'), findsOneWidget);
     expect(find.textContaining('passing'), findsOneWidget);
@@ -139,7 +139,7 @@ void main() {
     final store = await freshStore(onboarded: false);
     useTallPhone(tester);
     await tester.pumpWidget(
-      AegisApp(
+      AegissApp(
         store: store,
         probe: FakeProbe(Fixtures.androidHealthy()),
         ),

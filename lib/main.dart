@@ -22,5 +22,5 @@ Future<void> main() async {
 
   final store = await Store.open();
 
-  runApp(AegisApp(store: store, probe: ProbeChannel()));
+  runApp(AegissApp(store: store, probe: ProbeChannel()));
 }

@@ -1,4 +1,4 @@
-# Aegis
+# Aegiss
 
 A phone security maintainer. One screen: run a check, get a score, tap the thing
 that is wrong, land on the exact system settings page that fixes it.

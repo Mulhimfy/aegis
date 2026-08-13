@@ -88,7 +88,7 @@ class _ScanPageState extends State<ScanPage> with WidgetsBindingObserver {
       isApple
           ? CupertinoPageRoute<void>(
               builder: (_) => FindingDetailPage(checkId: finding.check.id),
-              title: 'Aegis',
+              title: 'Aegiss',
             )
           : MaterialPageRoute<void>(
               builder: (_) => FindingDetailPage(checkId: finding.check.id),
@@ -99,7 +99,7 @@ class _ScanPageState extends State<ScanPage> with WidgetsBindingObserver {
   void _push(Widget page) {
     Navigator.of(context).push(
       isApple
-          ? CupertinoPageRoute<void>(builder: (_) => page, title: 'Aegis')
+          ? CupertinoPageRoute<void>(builder: (_) => page, title: 'Aegiss')
           : MaterialPageRoute<void>(builder: (_) => page),
     );
   }
@@ -117,7 +117,7 @@ class _ScanPageState extends State<ScanPage> with WidgetsBindingObserver {
     }
 
     return AdaptivePage(
-      title: 'Aegis',
+      title: 'Aegiss',
       trailing: _SettingsButton(onTap: () => _push(const SettingsPage())),
       slivers: [
         SliverToBoxAdapter(child: _Header(onRescan: _rescan)),

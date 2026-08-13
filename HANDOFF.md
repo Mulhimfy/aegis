@@ -1,4 +1,4 @@
-# Aegis — state of play
+# Aegiss — state of play
 
 ```
 STATUS   analyze: clean  |  tests: 59 passing  |  release apk: 17.7 MB per-abi

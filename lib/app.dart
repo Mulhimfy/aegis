@@ -22,8 +22,8 @@ import 'features/welcome/welcome_page.dart';
 /// rather than one app widget wearing the other's clothes. That decision at the
 /// root is what lets every screen below use its platform's real navigation,
 /// real transitions and real text scaling without fighting anything.
-class AegisApp extends StatefulWidget {
-  const AegisApp({
+class AegissApp extends StatefulWidget {
+  const AegissApp({
     super.key,
     required this.store,
     required this.probe,
@@ -35,10 +35,10 @@ class AegisApp extends StatefulWidget {
   final ShareService? share;
 
   @override
-  State<AegisApp> createState() => _AegisAppState();
+  State<AegissApp> createState() => _AegissAppState();
 }
 
-class _AegisAppState extends State<AegisApp> {
+class _AegissAppState extends State<AegissApp> {
   late final ScanController _controller;
   late final ShareService _share;
   late final AppLinks _links;
@@ -117,7 +117,7 @@ class _AegisAppState extends State<AegisApp> {
       share: _share,
       child: isApple
           ? CupertinoApp(
-              title: 'Aegis',
+              title: 'Aegiss',
               debugShowCheckedModeBanner: false,
               theme: AppTheme.cupertino(
                 MediaQuery.platformBrightnessOf(context),
@@ -129,7 +129,7 @@ class _AegisAppState extends State<AegisApp> {
           // with the phone.
           : DynamicColorBuilder(
               builder: (lightScheme, darkScheme) => MaterialApp(
-                title: 'Aegis',
+                title: 'Aegiss',
                 debugShowCheckedModeBanner: false,
                 theme: AppTheme.material(Brightness.light, lightScheme),
                 darkTheme: AppTheme.material(Brightness.dark, darkScheme),

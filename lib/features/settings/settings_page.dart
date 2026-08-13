@@ -40,7 +40,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _erase() async {
     final confirmed = await confirmDestructive(
       context,
-      title: 'Erase what Aegis remembers?',
+      title: 'Erase what Aegiss remembers?',
       message: 'Your answers and your invite code. Your phone is not changed.',
       confirmLabel: 'Erase',
     );
@@ -59,13 +59,13 @@ class _SettingsPageState extends State<SettingsPage> {
 
     return AdaptivePage(
       title: 'Settings',
-      previousPageTitle: 'Aegis',
+      previousPageTitle: 'Aegiss',
       slivers: [
         SliverToBoxAdapter(
           child: AdaptiveSection(
             children: [
               AdaptiveRow(
-                title: 'What Aegis checks',
+                title: 'What Aegiss checks',
                 additionalInfo: '${Catalog.allChecks.length}',
                 onTap: () => Navigator.of(context).push(
                   isApple
@@ -97,7 +97,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         SliverToBoxAdapter(
           child: AdaptiveSection(
-            footer: 'Aegis has no server. Everything it knows is on this phone.',
+            footer: 'Aegiss has no server. Everything it knows is on this phone.',
             children: [
               AdaptiveRow(
                 title: 'Privacy policy',
@@ -108,7 +108,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               AdaptiveRow(
-                title: 'Erase what Aegis remembers',
+                title: 'Erase what Aegiss remembers',
                 titleColor: context.colors.critical,
                 onTap: _erase,
               ),

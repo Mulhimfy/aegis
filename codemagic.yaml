@@ -1,4 +1,4 @@
-# Codemagic CI/CD — Aegis
+# Codemagic CI/CD — Aegiss
 #
 # Two iOS workflows:
 #   ios-testflight   push to main  -> build, upload to TestFlight
@@ -161,7 +161,7 @@ workflows:
         # MANUAL: approved builds wait for you to press Release.
         # Change to AFTER_APPROVAL to ship the moment review clears.
         release_type: MANUAL
-        copyright: 2026 Aegis
+        copyright: 2026 Ahmad Al Ghafri
         cancel_previous_submissions: true
         # phased_release: true
       email:

@@ -41,7 +41,7 @@ class FindingDetailPage extends StatelessWidget {
     if (finding == null) {
       return const AdaptivePage(
         title: 'Check',
-        previousPageTitle: 'Aegis',
+        previousPageTitle: 'Aegiss',
         slivers: [
           SliverFillRemaining(
             hasScrollBody: false,
@@ -56,7 +56,7 @@ class FindingDetailPage extends StatelessWidget {
 
     return AdaptivePage(
       title: check.title,
-      previousPageTitle: 'Aegis',
+      previousPageTitle: 'Aegiss',
       slivers: [
         SliverToBoxAdapter(child: _Verdict(finding: finding, points: points)),
         SliverToBoxAdapter(child: _Why(check: check)),
