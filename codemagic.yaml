@@ -20,6 +20,13 @@ definitions:
     max_build_duration: 60
 
   env: &env
+    # CERTIFICATE_PRIVATE_KEY lives here, added as a secure variable in the
+    # Codemagic UI. Apple only ever stores the public half of a signing
+    # certificate, so the private key has to come from somewhere we control,
+    # and it has to be the same one every build or each run mints another
+    # certificate against a limit of three.
+    groups:
+      - ios_signing
     flutter: 3.44.8
     xcode: latest
     cocoapods: default
@@ -70,6 +77,7 @@ definitions:
         keychain initialize
         app-store-connect fetch-signing-files "$BUNDLE_ID" \
           --type IOS_APP_STORE \
+          --certificate-key=@env:CERTIFICATE_PRIVATE_KEY \
           --create
         keychain add-certificates
         xcode-project use-profiles
