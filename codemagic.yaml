@@ -1,0 +1,173 @@
+# Codemagic CI/CD — Aegis
+#
+# Two iOS workflows:
+#   ios-testflight   push to main  -> build, upload to TestFlight
+#   ios-appstore     tag v*        -> build, upload, submit for App Store review
+#
+# Before the first build, in the Codemagic UI:
+#   1. Team settings > Integrations > App Store Connect: add an API key.
+#      Name it exactly "Aegis ASC" or change `app_store_connect:` below to match.
+#      The key needs the App Manager role.
+#   2. Create the app record in App Store Connect (bundle com.aegiss.app), then
+#      put its numeric Apple ID into APP_STORE_APPLE_ID below.
+#
+# The API key covers signing too — `ios_signing` lets Codemagic fetch or create
+# the distribution certificate and provisioning profile automatically. Nothing
+# needs to be checked into the repo.
+
+definitions:
+  instance: &instance
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+
+  env: &env
+    flutter: 3.44.8
+    xcode: latest
+    cocoapods: default
+    vars:
+      BUNDLE_ID: "com.aegiss.app"
+      # Numeric Apple ID from App Store Connect > App Information.
+      # Leave empty until the app record exists; the build number falls back to 1.
+      APP_STORE_APPLE_ID: ""
+
+  signing: &signing
+    ios_signing:
+      distribution_type: app_store
+      bundle_identifier: com.aegiss.app
+
+  build_scripts: &build_scripts
+    - name: Get Flutter packages
+      script: flutter pub get
+
+    - name: Verify bundle identifier
+      # Fails loudly if the Xcode project drifts from the registered App ID,
+      # which otherwise only surfaces as an opaque signing error minutes later.
+      script: |
+        set -e
+        FOUND=$(grep -m1 -o 'PRODUCT_BUNDLE_IDENTIFIER = [^;]*' ios/Runner.xcodeproj/project.pbxproj | sed 's/.*= //')
+        echo "Xcode project: $FOUND   expected: $BUNDLE_ID"
+        if [ "$FOUND" != "$BUNDLE_ID" ]; then
+          echo "Bundle identifier mismatch."
+          exit 1
+        fi
+
+    - name: Static analysis
+      script: flutter analyze
+
+    - name: Unit tests
+      script: flutter test --reporter expanded
+
+    - name: Generate iOS config and install pods
+      # The repo has no committed Podfile; --config-only writes it along with
+      # Generated.xcconfig, then pods install against it.
+      script: |
+        set -e
+        flutter precache --ios
+        flutter build ios --config-only --release
+        find . -name "Podfile" -execdir pod install \;
+
+    - name: Set up code signing
+      script: xcode-project use-profiles
+
+    - name: Resolve next build number
+      # One past whatever TestFlight already has, so a build is never rejected
+      # for a duplicate CFBundleVersion. Falls back to 1 on the very first run.
+      script: |
+        set -e
+        LATEST=""
+        if [ -n "$APP_STORE_APPLE_ID" ]; then
+          LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" --platform IOS 2>/dev/null || echo "")
+        fi
+        if [ -z "$LATEST" ]; then
+          LATEST=0
+        fi
+        NEXT=$((LATEST + 1))
+        echo "Building as build number $NEXT"
+        echo "AEGIS_BUILD_NUMBER=$NEXT" >> $CM_ENV
+
+    - name: Build IPA
+      # --build-name comes from pubspec.yaml (version: 1.0.0+1).
+      script: |
+        set -e
+        flutter build ipa --release \
+          --build-number=$AEGIS_BUILD_NUMBER \
+          --export-options-plist=/Users/builder/export_options.plist
+
+  artifacts: &artifacts
+    - build/ios/ipa/*.ipa
+    - build/ios/archive/*.xcarchive/dSYMs/**/*.dSYM
+    - /tmp/xcodebuild_logs/*.log
+
+workflows:
+
+  # --------------------------------------------------------------------------
+  # Every push to main lands in TestFlight.
+  # --------------------------------------------------------------------------
+  ios-testflight:
+    name: iOS — TestFlight
+    <<: *instance
+    integrations:
+      app_store_connect: Aegis ASC
+    environment:
+      <<: [*env, *signing]
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+      cancel_previous_builds: true
+    scripts: *build_scripts
+    artifacts: *artifacts
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        # Groups must already exist in App Store Connect or the upload step fails.
+        beta_groups:
+          - Internal
+        submit_to_app_store: false
+      email:
+        recipients:
+          - shadow1xxx0@gmail.com
+        notify:
+          success: true
+          failure: true
+
+  # --------------------------------------------------------------------------
+  # Tag v1.0.0 (etc.) to cut a release and send it to review.
+  # --------------------------------------------------------------------------
+  ios-appstore:
+    name: iOS — App Store submission
+    <<: *instance
+    integrations:
+      app_store_connect: Aegis ASC
+    environment:
+      <<: [*env, *signing]
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'v*'
+          include: true
+      cancel_previous_builds: false
+    scripts: *build_scripts
+    artifacts: *artifacts
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        submit_to_app_store: true
+        # MANUAL: approved builds wait for you to press Release.
+        # Change to AFTER_APPROVAL to ship the moment review clears.
+        release_type: MANUAL
+        copyright: 2026 Aegis
+        cancel_previous_submissions: true
+        # phased_release: true
+      email:
+        recipients:
+          - shadow1xxx0@gmail.com
+        notify:
+          success: true
+          failure: true
