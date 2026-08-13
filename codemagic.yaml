@@ -56,7 +56,7 @@ definitions:
       script: |
         set -e
         flutter precache --ios
-        flutter build ios --config-only --release
+        flutter build ios --config-only --release --no-codesign
         find . -name "Podfile" -execdir pod install \;
 
     - name: Set up code signing
