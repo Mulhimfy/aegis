@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/app_scope.dart';
 import '../../core/design/adaptive.dart';
@@ -8,6 +9,12 @@ import '../../core/design/semantic_colors.dart';
 import '../../core/design/tokens.dart';
 import '../../domain/catalog.dart';
 import '../../domain/check.dart';
+
+/// The policy, served from the repo's GitHub Pages site.
+///
+/// App Store Review 5.1.1(i) wants this link in two places: the App Store
+/// listing and somewhere reachable inside the app. Settings is the second one.
+const privacyPolicyUrl = 'https://mulhimfy.github.io/aegis/privacy.html';
 
 /// Settings.
 ///
@@ -92,6 +99,14 @@ class _SettingsPageState extends State<SettingsPage> {
           child: AdaptiveSection(
             footer: 'Aegis has no server. Everything it knows is on this phone.',
             children: [
+              AdaptiveRow(
+                title: 'Privacy policy',
+                titleColor: context.colors.accent,
+                onTap: () => launchUrl(
+                  Uri.parse(privacyPolicyUrl),
+                  mode: LaunchMode.externalApplication,
+                ),
+              ),
               AdaptiveRow(
                 title: 'Erase what Aegis remembers',
                 titleColor: context.colors.critical,
