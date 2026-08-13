@@ -17,7 +17,7 @@ import UIKit
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
     GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
 
-    let messenger = engineBridge.applicationBinaryMessenger
+    let messenger = engineBridge.applicationRegistrar.messenger()
     let channel = FlutterMethodChannel(name: AppDelegate.channelName, binaryMessenger: messenger)
 
     channel.setMethodCallHandler { [weak self] call, result in
