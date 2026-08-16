@@ -136,10 +136,19 @@ workflows:
     publishing:
       app_store_connect:
         auth: integration
-        submit_to_testflight: true
-        # Groups must already exist in App Store Connect or the upload step fails.
-        beta_groups:
-          - Internal
+        # Upload only. The build lands in TestFlight and is installable by
+        # internal testers (anyone on the App Store Connect Users group) as soon
+        # as Apple finishes processing it — internal testing needs no review.
+        #
+        # submit_to_testflight: true means *external* beta review, which Apple
+        # gates behind test information the app does not have yet: a feedback
+        # email, plus a review contact name, phone and email. Both live at
+        # appstoreconnect.apple.com/apps/6801120882/testflight/test-info and
+        # cannot be set from here. Fill that form, create the external group,
+        # then flip this to true and list the group under beta_groups.
+        submit_to_testflight: false
+        # beta_groups:
+        #   - Internal
         submit_to_app_store: false
       email:
         recipients:
@@ -170,7 +179,10 @@ workflows:
     publishing:
       app_store_connect:
         auth: integration
-        submit_to_testflight: true
+        # Same as above: external beta review is a separate gate from App Store
+        # review and would fail the tag build on missing test information. App
+        # Store submission does not depend on it.
+        submit_to_testflight: false
         submit_to_app_store: true
         # MANUAL: approved builds wait for you to press Release.
         # Change to AFTER_APPROVAL to ship the moment review clears.
